@@ -1,0 +1,10 @@
+[mysqld]
+server-id = 2
+pid-file = /var/run/mysqld/mysqld.pid
+socket = /var/run/mysqld/mysqld.sock
+datadir = /var/lib/mysql
+log-error = /var/log/mysql/error.log
+character-set-server = utf8
+log-bin = mysql-bin
+binlog-do-db = repltest
+replicate-do-db = repltest
