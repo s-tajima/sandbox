@@ -2,6 +2,7 @@ DOCKER_COMPOSE := ../bin/docker-compose
 
 run: 
 	$(MAKE) up 
+	sleep 60
 	$(MAKE) test
 
 clean: 
