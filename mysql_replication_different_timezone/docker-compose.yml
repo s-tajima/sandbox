@@ -2,9 +2,8 @@ mysql_master:
   image: mysql:5.6.37
   ports:
     - "23306:3306"
+  env_file: .env
   environment:
-    MYSQL_DATABASE: repltest
-    MYSQL_ROOT_PASSWORD: pass
     TZ: Japan
   volumes:
     - ./mounts/mysql_master/mysql.conf.d/:/etc/mysql/mysql.conf.d/
@@ -16,9 +15,7 @@ mysql_slave:
     - "23316:3306"
   links:
     - mysql_master
-  environment:
-    MYSQL_DATABASE: repltest
-    MYSQL_ROOT_PASSWORD: pass
+  env_file: .env
   volumes:
     - ./mounts/mysql_slave/mysql.conf.d/:/etc/mysql/mysql.conf.d/
     - ./mounts/mysql_slave/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d/

@@ -1,5 +1,12 @@
 DOCKER_COMPOSE := ../bin/docker-compose
 
+run: 
+	$(MAKE) up 
+	$(MAKE) test
+
+clean: 
+	$(MAKE) down
+
 up:
 	sudo $(DOCKER_COMPOSE) up -d
 
@@ -15,7 +22,6 @@ port:
 ps:
 	sudo $(DOCKER_COMPOSE) ps
 
-run:
-	mysql -h 127.0.0.1 -u root -ppass -P 23306 repltest -e "select * from time_test;"
-	mysql -h 127.0.0.1 -u root -ppass -P 23316 repltest -e "select * from time_test;"
+test:
+	./test.sh
 
