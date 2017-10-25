@@ -8,3 +8,4 @@ character-set-server = utf8
 log-bin = mysql-bin
 binlog-do-db = repltest
 replicate-do-db = repltest
+default-time-zone = +09:00

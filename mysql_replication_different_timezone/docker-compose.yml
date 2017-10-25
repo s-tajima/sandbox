@@ -5,6 +5,7 @@ mysql_master:
   environment:
     MYSQL_DATABASE: repltest
     MYSQL_ROOT_PASSWORD: pass
+    TZ: Japan
   volumes:
     - ./mounts/mysql_master/mysql.conf.d/:/etc/mysql/mysql.conf.d/
     - ./mounts/mysql_master/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d/
