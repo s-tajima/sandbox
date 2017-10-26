@@ -97,7 +97,7 @@ MySQL [(repltest)]> SELCT * FROM time_test;
 
 ### How to fix this.
 
-set time_zone explicitly on master.
+set time_zone explicitly on the master.
 
 ```
 set global time_zone='+09:00'
