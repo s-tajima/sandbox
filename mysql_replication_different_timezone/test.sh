@@ -11,7 +11,7 @@ mysql -u "${MYSQL_USER}" -p${MYSQL_ROOT_PASSWORD} -P 23306 "${MYSQL_DATABASE}" -
 mysql -u "${MYSQL_USER}" -p${MYSQL_ROOT_PASSWORD} -P 23306 "${MYSQL_DATABASE}" -e "INSERT INTO time_test (id, dt, ts) VALUES (1, now(), now()), (2, '2017-01-01 00:00:00', '2017-01-01 00:00:00');"
 mysql -u "${MYSQL_USER}" -p${MYSQL_ROOT_PASSWORD} -P 23306 "${MYSQL_DATABASE}" -e "SET time_zone = '+09:00'; INSERT INTO time_test (id, dt, ts) VALUES (3, now(), now()), (4, '2017-01-01 00:00:00', '2017-01-01 00:00:00');"
 
-echo "## on master ##"
+echo "## on the master ##"
 mysql -u "${MYSQL_USER}" -p${MYSQL_ROOT_PASSWORD} -P 23306 "${MYSQL_DATABASE}" -e "SELECT * FROM time_test;"
-echo "## on slave ##"
+echo "## on the slave ##"
 mysql -u "${MYSQL_USER}" -p${MYSQL_ROOT_PASSWORD} -P 23316 "${MYSQL_DATABASE}" -e "SELECT * FROM time_test;"
