@@ -27,7 +27,8 @@ MySQL [(none)]> show variables like '%time_zone%';
 +------------------+--------+
 2 rows in set (0.05 sec)
 
-MySQL [(none)]> show global variables like '%time_zone%'; +------------------+--------+
+MySQL [(none)]> show global variables like '%time_zone%';
++------------------+--------+
 | Variable_name    | Value  |
 +------------------+--------+
 | system_time_zone | JST    |
