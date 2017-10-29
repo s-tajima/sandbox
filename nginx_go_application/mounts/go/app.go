@@ -1,24 +1,28 @@
 package main
 
 import (
-	"fmt"
-	"github.com/julienschmidt/httprouter"
-	"log"
 	"net/http"
+
+	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 )
 
-func getIndex(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	fmt.Fprint(w, "[Go] Index.\n")
+func getIndex(c echo.Context) error {
+	return c.String(http.StatusOK, "[Go] getIndex().")
 }
 
-func getProxy(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	fmt.Fprintf(w, "[Go] Proxy\n")
+func getProxy(c echo.Context) error {
+	return c.String(http.StatusOK, "[Go] getProxy().")
 }
 
 func main() {
-	router := httprouter.New()
-	router.GET("/", getIndex)
-	router.GET("/proxy", getProxy)
+	e := echo.New()
 
-	log.Fatal(http.ListenAndServe(":5000", router))
+	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
+
+	e.GET("/", getIndex)
+	e.GET("/proxy", getProxy)
+
+	e.Logger.Fatal(e.Start(":5000"))
 }
