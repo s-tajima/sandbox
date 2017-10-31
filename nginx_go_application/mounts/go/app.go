@@ -27,7 +27,7 @@ func main() {
 
 	e.GET("/", getIndex)
 	e.GET("/proxy", getProxy)
-	e.GET("/proxy", postProxy)
+	e.POST("/proxy", postProxy)
 
 	e.Logger.Fatal(e.Start(":5000"))
 }
