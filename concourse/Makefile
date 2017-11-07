@@ -23,6 +23,11 @@ remove_key:
 up:
 	sudo -E $(DOCKER_COMPOSE) up -d
 
+init:
+	#bin/fly -t main login -c http://127.0.0.1:18080/
+	#bin/fly -t main set-pipeline -p hello-world -c hello.yml
+	bin/fly -t main set-pipeline -p inputs -c inputs.yml
+
 down:
 	sudo -E $(DOCKER_COMPOSE) down
 
