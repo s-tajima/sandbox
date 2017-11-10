@@ -24,9 +24,11 @@ up:
 	sudo -E $(DOCKER_COMPOSE) up -d
 
 init:
-	#bin/fly -t main login -c http://127.0.0.1:18080/
-	#bin/fly -t main set-pipeline -p hello-world -c hello.yml
-	bin/fly -t main set-pipeline -p inputs -c inputs.yml
+	bin/fly -t main login -c http://127.0.0.1:18080/ -u concourse -p changeme
+	bin/fly -t main set-pipeline -p hello-world -c pipelines/01_hello/task.yml --non-interactive
+	bin/fly -t main set-pipeline -p simple-app -c pipelines/02_clone_and_test/pipeline.yml --non-interactive
+	bin/fly -t main unpause-pipeline --pipeline simple-app
+ 
 
 down:
 	sudo -E $(DOCKER_COMPOSE) down
