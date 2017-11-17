@@ -1,0 +1,8 @@
+version: '3'
+services:
+  redis_sh1_master:
+    image: redis
+    network_mode: host
+  redis_sh1_replica:
+    image: redis
+    network_mode: host
