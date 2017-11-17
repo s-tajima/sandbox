@@ -3,12 +3,18 @@ services:
   redis_sh1_master:
     image: redis
     volumes:
-      - ./mounts/redis-conf/redis_sh1_master.conf:/usr/local/etc/redis/redis.conf
-    command: redis-server /usr/local/etc/redis/redis.conf
+      - ./mounts/redis.conf:/etc/redis/redis.conf
+    command: 
+      - "redis-server"
+      - "/etc/redis/redis.conf"
+      - "--port 17000"
     network_mode: host
   redis_sh1_replica:
     image: redis
     volumes:
-      - ./mounts/redis-conf/redis_sh1_replica.conf:/usr/local/etc/redis/redis.conf
-    command: redis-server /usr/local/etc/redis/redis.conf
+      - ./mounts/redis.conf:/etc/redis/redis.conf
+    command:
+      - "redis-server"
+      - "/etc/redis/redis.conf"
+      - "--port 17001"
     network_mode: host
