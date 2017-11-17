@@ -1,16 +1,27 @@
+DOCKER_COMPOSE := ../bin/docker-compose
+
 setup:
-	sudo ../bin/docker-compose run web rails new . --force --database=postgresql
+	sudo $(DOCKER_COMPOSE) run web rails new . --force --database=postgresql
 	sudo chown -R $$USER .
-	sudo ../bin/docker-compose build
+	sudo $(DOCKER_COMPOSE) build
 
 up:
-	sudo ../bin/docker-compose up -d 
-	sudo ../bin/docker-compose run web rake db:create
+	sudo $(DOCKER_COMPOSE) up -d 
+	sudo $(DOCKER_COMPOSE) run web rake db:create
 
 down:
-	sudo ../bin/docker-compose down
+	sudo $(DOCKER_COMPOSE) down
 	sudo rm -f tmp/pids/server.pid
 
 logs:
-	sudo ../bin/docker-compose logs -f
-	
+	sudo $(DOCKER_COMPOSE) logs -f
+
+port:
+	sudo $(DOCKER_COMPOSE) port all
+
+ps:
+	sudo $(DOCKER_COMPOSE) ps
+
+SERVICE=web
+exec:
+	sudo $(DOCKER_COMPOSE) exec $(SERVICE) /bin/bash
