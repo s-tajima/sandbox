@@ -7,7 +7,7 @@ services:
     command: 
       - "redis-server"
       - "/etc/redis/redis.conf"
-      - "--port 17000"
+      - "--port 17010"
     network_mode: host
   redis_sh1_replica:
     image: redis
@@ -16,5 +16,41 @@ services:
     command:
       - "redis-server"
       - "/etc/redis/redis.conf"
-      - "--port 17001"
+      - "--port 17011"
+    network_mode: host
+  redis_sh2_master:
+    image: redis
+    volumes:
+      - ./mounts/redis.conf:/etc/redis/redis.conf
+    command: 
+      - "redis-server"
+      - "/etc/redis/redis.conf"
+      - "--port 17020"
+    network_mode: host
+  redis_sh2_replica:
+    image: redis
+    volumes:
+      - ./mounts/redis.conf:/etc/redis/redis.conf
+    command:
+      - "redis-server"
+      - "/etc/redis/redis.conf"
+      - "--port 17021"
+    network_mode: host
+  redis_sh3_master:
+    image: redis
+    volumes:
+      - ./mounts/redis.conf:/etc/redis/redis.conf
+    command: 
+      - "redis-server"
+      - "/etc/redis/redis.conf"
+      - "--port 17030"
+    network_mode: host
+  redis_sh3_replica:
+    image: redis
+    volumes:
+      - ./mounts/redis.conf:/etc/redis/redis.conf
+    command:
+      - "redis-server"
+      - "/etc/redis/redis.conf"
+      - "--port 17031"
     network_mode: host
