@@ -2,7 +2,13 @@ version: '3'
 services:
   redis_sh1_master:
     image: redis
+    volumes:
+      - ./mounts/redis-conf/redis_sh1_master.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf
     network_mode: host
   redis_sh1_replica:
     image: redis
+    volumes:
+      - ./mounts/redis-conf/redis_sh1_replica.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf
     network_mode: host
