@@ -1,5 +1,7 @@
 DOCKER_COMPOSE := ../bin/docker-compose
 
+run: build down up redis-trib
+
 build:
 	sudo $(DOCKER_COMPOSE) build
 	sudo docker build -t redis-trib -f Dockerfile_redis-tirb .
