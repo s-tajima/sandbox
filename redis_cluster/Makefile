@@ -21,7 +21,8 @@ port:
 ps:
 	sudo $(DOCKER_COMPOSE) ps
 
-redis-trib:
+redis-trib: redis-trib/create
+redis-trib/create:
 	sudo docker run --network=host --rm -it redis-trib create \
 		--replicas 1 \
 		127.0.0.1:17010 \
@@ -30,6 +31,9 @@ redis-trib:
 		127.0.0.1:17021 \
 		127.0.0.1:17030 \
 		127.0.0.1:17031
+
+redis-trib/check:
+	sudo docker run --network=host --rm -it redis-trib check 127.0.0.1:17010
 
 PORT=17010
 redis-cli:
