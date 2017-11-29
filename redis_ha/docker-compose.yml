@@ -1,0 +1,18 @@
+version: '3'
+services:
+  redis1:
+    container_name: redis1
+    image: redis
+    volumes:
+      - ./mounts/redis.conf:/etc/redis/redis.conf
+    command: 
+      - "redis-server"
+      - "/etc/redis/redis.conf"
+  redis2:
+    container_name: redis2
+    image: redis
+    volumes:
+      - ./mounts/redis.conf:/etc/redis/redis.conf
+    command:
+      - "redis-server"
+      - "/etc/redis/redis.conf"
