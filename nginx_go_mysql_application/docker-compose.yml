@@ -13,3 +13,5 @@ go:
   volumes:
     - ./mounts/go//:/go/
   command: sh ./run.sh
+mysql:
+  image: mysql
