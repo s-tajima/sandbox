@@ -8,4 +8,7 @@ require (
 	github.com/jessevdk/go-flags v1.4.0
 )
 
-replace github.com/go-swagger-sample/gen/restapi => ../../restapi/
+replace (
+	github.com/go-swagger-sample/gen/restapi => ../../restapi/
+	github.com/go-swagger-sample/gen/models => ../../models/
+)
