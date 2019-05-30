@@ -149,6 +149,13 @@ var routes = Routes{
 	},
 
 	{
+		"Test",
+		strings.ToUpper("Put"),
+		"/v2/addon",
+		Test,
+	},
+
+	{
 		"CreateUser",
 		strings.ToUpper("Post"),
 		"/v2/user",

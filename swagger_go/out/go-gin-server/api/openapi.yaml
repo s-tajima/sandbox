@@ -31,6 +31,36 @@ tags:
     url: http://swagger.io
   name: user
 paths:
+  /addon:
+    put:
+      operationId: test
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        description: Pet object that needs to be added to the store
+        required: true
+      responses:
+        400:
+          content: {}
+          description: Invalid ID supplied
+        404:
+          content: {}
+          description: Pet not found
+        405:
+          content: {}
+          description: Validation exception
+      security:
+      - petstore_auth:
+        - write:pets
+        - read:pets
+      summary: Test Endpoint
+      tags:
+      - test
   /pet:
     post:
       operationId: addPet
