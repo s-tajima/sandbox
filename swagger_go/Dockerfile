@@ -1,8 +1,15 @@
 FROM golang:alpine
-WORKDIR /go
 
+ENV GO111MODULE=on
+WORKDIR /go/src/github.com/go-swagger-sample
+
+COPY ./src /go/src/github.com/go-swagger-sample
+ 
 RUN apk add bash git
-RUN go get github.com/swaggo/swag/cmd/swag
+RUN go get -u github.com/go-swagger/go-swagger/cmd/swagger
+RUN swagger generate server -t gen -f swagger/swagger.yml -A GoSwaggerSample
 
-CMD /bin/sh
+#RUN cd ./gen/cmd/go-swagger-sample-server/ && go get && go build
+
+CMD /bin/bash
 

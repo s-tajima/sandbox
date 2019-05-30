@@ -1,17 +1,15 @@
 DOCKER_COMPOSE := ../bin/docker-compose
 
-build:
+MOUNT_PATH := /go/src/github.com/go-swagger-sample
+
+docker/build:
 	docker build -t swagger-go-echo . 
 
-run:
-	docker run -it swagger-go-echo
+docker/bash:
+	docker run -v $(shell pwd)/src:$(MOUNT_PATH) -it swagger-go-echo /bin/bash
 
-
-generate/client:
-	docker run -v $(shell pwd):/local openapitools/openapi-generator-cli:v3.3.4 generate -i /local/swagger.yml -g go -o /local/out/go
-
-generate/server:
-	docker run -v $(shell pwd):/local openapitools/openapi-generator-cli:v3.3.4 generate -i /local/swagger.yml -g go-gin-server -o /local/out/go-gin-server
+docker/generate:
+	docker run -v $(shell pwd):$(MOUNT_PATH) -it swagger-go-echo swagger generate server -f swagger.yml -A SwaggerExp1
 
 down:
 	$(DOCKER_COMPOSE) down
