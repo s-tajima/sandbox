@@ -1,9 +1,8 @@
 class TopController < ApplicationController
+  protect_from_forgery with: :exception
+
   def index
-    sql = ActiveRecord::Base.send(:sanitize_sql_array, [
-      "LEFT OUTER JOIN stock_daily_prices AS c ON stocks.id=c.stock_id AND c.priced_on=:date",
-      date: "--"
-    ])
-    puts sql
+    cookies.permanent.signed[:user_id] = 1
+    cookies.permanent[:remember_token] = 1
   end
 end
