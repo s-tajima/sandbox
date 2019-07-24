@@ -5,6 +5,10 @@ setup:
 	chown -R $$USER .
 	$(DOCKER_COMPOSE) build
 
+update:
+	$(DOCKER_COMPOSE) run web bundle update
+	$(DOCKER_COMPOSE) build
+
 up:
 	$(DOCKER_COMPOSE) up -d
 	$(DOCKER_COMPOSE) run web rake db:create
