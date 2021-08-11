@@ -1,0 +1,34 @@
+<html>
+<head>
+<script>
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "https://site-b-none.local:8443/setcookie/", true);
+	xhr.withCredentials = true;
+	xhr.onload = function (e) {
+			if (xhr.readyState === 4) {
+					if (xhr.status === 200) {
+							console.log(xhr.responseText);
+						} else {
+								console.error(xhr.statusText);
+							}
+				}
+		};
+	xhr.onerror = function (e) {
+			console.error(xhr.statusText);
+		};
+	xhr.send(null);
+
+	//fetch('https://site-b-none.local:8443/setcookie/', {
+	//		method: 'POST',
+	//		mode: 'cors',
+	//		credentials: 'include'
+	//	})
+	//	.then((response) => response.text())
+	//	.then((text) => console.log(text))
+	//	.catch((error) => console.log(error));
+</script>
+</head>
+
+<body>
+<h1>site-a</h1>
+</body>
